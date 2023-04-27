@@ -1,0 +1,39 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "mediator_pattern::mediator_pattern.dart::Colleague" {
+  +void send()
+  +void receive()
+}
+
+class "mediator_pattern::mediator_pattern.dart::ConcreteColleague1" {
+  -Mediator _mediator
+  +void send()
+  +void receive()
+}
+
+"mediator_pattern::mediator_pattern.dart::ConcreteColleague1" o-- "mediator_pattern::mediator_pattern.dart::Mediator"
+"mediator_pattern::mediator_pattern.dart::Colleague" <|-- "mediator_pattern::mediator_pattern.dart::ConcreteColleague1"
+
+class "mediator_pattern::mediator_pattern.dart::ConcreteColleague2" {
+  -Mediator _mediator
+  +void send()
+  +void receive()
+}
+
+"mediator_pattern::mediator_pattern.dart::ConcreteColleague2" o-- "mediator_pattern::mediator_pattern.dart::Mediator"
+"mediator_pattern::mediator_pattern.dart::Colleague" <|-- "mediator_pattern::mediator_pattern.dart::ConcreteColleague2"
+
+class "mediator_pattern::mediator_pattern.dart::Mediator" {
+  -ConcreteColleague1 _colleague1
+  -ConcreteColleague2 _colleague2
+  +ConcreteColleague1 colleague1
+  +ConcreteColleague2 colleague2
+  +void send()
+}
+
+"mediator_pattern::mediator_pattern.dart::Mediator" o-- "mediator_pattern::mediator_pattern.dart::ConcreteColleague1"
+"mediator_pattern::mediator_pattern.dart::Mediator" o-- "mediator_pattern::mediator_pattern.dart::ConcreteColleague2"
+
+
+@enduml
